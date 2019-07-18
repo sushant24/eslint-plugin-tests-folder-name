@@ -7,7 +7,7 @@
     "eslintplugin",
     "eslint-plugin"
   ],
-  "author": "Sprinklr",
+  "author": "Sushant bhatia",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha tests --recursive"
