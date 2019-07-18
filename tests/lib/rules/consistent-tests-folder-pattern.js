@@ -26,14 +26,22 @@ ruleTester.run("consistent-tests-folder-pattern", rule, {
         {
             code: testCode,
             filename: '/Dev/MyProject/src/Component/__tests__/testFile.spec.js',
+            options: [[{ filePattern: '.*\.spec\.js$', folderPattern: '__tests__' }]]
         },
         {
             code: testCode,
             filename: '/Dev/MyProject/src/Component.js',
+            options: [[{ filePattern: '.*\.spec\.js$', folderPattern: '__tests__' }]]
         },
         {
             code: testCode,
             filename: '/Dev/MyProject/src/Component/__tests__/submodule/Component.js',
+            options: [[{ filePattern: '.*\.spec\.js$', folderPattern: '__tests__' }]]
+        },
+        {
+            code: testCode,
+            filename: '/Dev/MyProject/src/Component/__fixtures__/submodule/Component.fixtures.js',
+            options: [[{ filePattern: '.*\.fixtures\.js$', folderPattern: '__fixtures__' }]]
         }
     ],
 
@@ -41,22 +49,31 @@ ruleTester.run("consistent-tests-folder-pattern", rule, {
         {
             code: testCode,
             filename: '/Dev/MyProject/tests/testFile.spec.js',
+            options: [[{ filePattern: '.*\.spec\.js$', folderPattern: '__tests__' }]],
             errors: [{
-                message: "File '/Dev/MyProject/tests/testFile.spec.js' must be put under the __tests__ folder"
+                message: "File 'testFile.spec.js' should be placed under the recommended folder pattern."
             }]
         },
         {
             code: testCode,
             filename: '/Dev/MyProject/specs/testFile.spec.js',
             errors: [{
-                message: "File '/Dev/MyProject/specs/testFile.spec.js' must be put under the __tests__ folder"
+                message: "File 'testFile.spec.js' should be placed under the recommended folder pattern."
             }]
         },
         {
             code: testCode,
             filename: '/Dev/MyProject/__specs__/testFile.spec.js',
             errors: [{
-                message: "File '/Dev/MyProject/__specs__/testFile.spec.js' must be put under the __tests__ folder"
+                message: "File 'testFile.spec.js' should be placed under the recommended folder pattern."
+            }]
+        },
+        {
+            code: testCode,
+            filename: '/Dev/MyProject/__specs__/testFile.fixtures.js',
+            options: [[{ filePattern: '.*\.fixtures\.js$', folderPattern: '__fixtures__' }]],
+            errors: [{
+                message: "File 'testFile.fixtures.js' should be placed under the recommended folder pattern."
             }]
         }
     ]
